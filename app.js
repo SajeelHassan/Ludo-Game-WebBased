@@ -5,11 +5,10 @@ var diceFaces = new Array("./dicefaces/one.png","./dicefaces/two.png","./dicefac
 
 var totalPlayers=4;
 var gameEnd=false;
-var sRandomNum=0;
+
 for(let i=1;i<totalPlayers+1;i++){
     document.getElementById('player-'+i).classList.remove('disabledDiv');
-    sRandomNum= Math.floor(Math.random() * diceFaces.length);
-    document.getElementById("dice-p"+i).src=diceFaces[sRandomNum];
+    document.getElementById("dice-p"+i).src='./dicefaces/locked.png';
 
     
 }
