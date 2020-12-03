@@ -6,7 +6,7 @@ var diceFaces = new Array("./dicefaces/one.png","./dicefaces/two.png","./dicefac
 // const diceP2 = document.getElementById('dice-p2');
 // const diceP3 = document.getElementById('dice-p3');
 // const diceP4 = document.getElementById('dice-p4');
-var totalPlayers=2;
+var totalPlayers=4;
 var gameEnd=false;
 var sRandomNum=0;
 for(let i=1;i<totalPlayers+1;i++){
@@ -63,32 +63,116 @@ function pickPiece(e) {
     const clicks = e.target;
     console.log(e.target);
     if (clicks.matches('.p1-piece')) {
-       
-        newElement = document.createElement('div');
-        newElement.innerHTML+=`<div class='running-p1' ></div>`;
-        // startP1.appendChild( newElement);
-        document.getElementById('start-p1').appendChild( newElement);
-        p1_running+=1;
-        pickedOrNot=true;
-        dicePoints.shift();
-        // document.getElementById('p1Home').removeEventListener('click',pickPiece);
-        clicks.style.visibility = 'hidden';
-        console.log('new Goti of Player -1');
-        console.log(document.getElementById('start-p1'));
-        if (dicePoints[0]!=6) {
-            document.getElementById('p1Home').removeEventListener('click',pickPiece);
-        }
-        // Track Event Listeners  
-        if (p1_running!=0) {
-            console.log('Bari Chalein');
-                // Track Event Listeners ON  
-            document.querySelectorAll('.mytable')[0].addEventListener('click',rollForward);
-            document.querySelectorAll('.mytable')[1].addEventListener('click',rollForward);
-            document.querySelectorAll('.mytable')[2].addEventListener('click',rollForward);
-            document.querySelectorAll('.mytable')[3].addEventListener('click',rollForward);
-        }
-        
-        
+        if (dicePoints[0]==6)
+            {
+            newElement = document.createElement('div');
+            newElement.innerHTML+=`<div class='running-p1' ></div>`;
+            // startP1.appendChild( newElement);
+            document.getElementById('start-p1').appendChild( newElement);
+            p1_running+=1;
+            pickedOrNot=true;
+            dicePoints.shift();
+            // document.getElementById('p1Home').removeEventListener('click',pickPiece);
+            clicks.style.visibility = 'hidden';
+            console.log('new Goti of Player -1');
+            console.log(document.getElementById('start-p1'));
+            if (dicePoints[0]!=6) {
+                document.getElementById('p1Home').removeEventListener('click',pickPiece);
+            }
+            // Track Event Listeners  
+            if (p1_running!=0) {
+                console.log('Bari Chalein');
+                    // Track Event Listeners ON  
+                document.querySelectorAll('.mytable')[0].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[1].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[2].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[3].addEventListener('click',rollForward);
+            }
+        } 
+    }
+    else if (clicks.matches('.p2-piece')) {
+        if (dicePoints[0]==6)
+            {
+            newElement = document.createElement('div');
+            newElement.innerHTML+=`<div class='running-p2' ></div>`;
+            // startP2.appendChild( newElement);
+            document.getElementById('start-p2').appendChild( newElement);
+            p2_running+=1;
+            pickedOrNot=true;
+            dicePoints.shift();
+            // document.getElementById('p1Home').removeEventListener('click',pickPiece);
+            clicks.style.visibility = 'hidden';
+            console.log('new Goti of Player -2');
+            console.log(document.getElementById('start-p2'));
+            if (dicePoints[0]!=6) {
+                document.getElementById('p2Home').removeEventListener('click',pickPiece);
+            }
+            // Track Event Listeners  
+            if (p2_running!=0) {
+                console.log('Bari Chalein');
+                    // Track Event Listeners ON  
+                document.querySelectorAll('.mytable')[0].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[1].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[2].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[3].addEventListener('click',rollForward);
+            }
+        } 
+    }
+    else if (clicks.matches('.p3-piece')) {
+        if (dicePoints[0]==6)
+            {
+            newElement = document.createElement('div');
+            newElement.innerHTML+=`<div class='running-p3' ></div>`;
+            // startP3.appendChild( newElement);
+            document.getElementById('start-p3').appendChild( newElement);
+            p3_running+=1;
+            pickedOrNot=true;
+            dicePoints.shift();
+            // document.getElementById('p3Home').removeEventListener('click',pickPiece);
+            clicks.style.visibility = 'hidden';
+            console.log('new Goti of Player -3');
+            console.log(document.getElementById('start-p3'));
+            if (dicePoints[0]!=6) {
+                document.getElementById('p3Home').removeEventListener('click',pickPiece);
+            }
+            // Track Event Listeners  
+            if (p3_running!=0) {
+                console.log('Bari Chalein');
+                    // Track Event Listeners ON  
+                document.querySelectorAll('.mytable')[0].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[1].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[2].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[3].addEventListener('click',rollForward);
+            }
+        } 
+    }
+    else if (clicks.matches('.p4-piece')) {
+        if (dicePoints[0]==6)
+            {
+            newElement = document.createElement('div');
+            newElement.innerHTML+=`<div class='running-p4' ></div>`;
+            // startP4.appendChild( newElement);
+            document.getElementById('start-p4').appendChild( newElement);
+            p4_running+=1;
+            pickedOrNot=true;
+            dicePoints.shift();
+            // document.getElementById('p4Home').removeEventListener('click',pickPiece);
+            clicks.style.visibility = 'hidden';
+            console.log('new Goti of Player -4');
+            console.log(document.getElementById('start-p4'));
+            if (dicePoints[0]!=6) {
+                document.getElementById('p4Home').removeEventListener('click',pickPiece);
+            }
+            // Track Event Listeners  
+            if (p4_running!=0) {
+                console.log('Bari Chalein');
+                    // Track Event Listeners ON  
+                document.querySelectorAll('.mytable')[0].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[1].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[2].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[3].addEventListener('click',rollForward);
+            }
+        } 
     }
 }
 
@@ -107,12 +191,19 @@ function rollForward(e){
     // dicePoints.shift();
     if (clicks.matches('.running-p1')) {
         //console.log(clicks);
+        console.log('Before remove Last dicePOint ',dicePoints[0]);
         newElement=clicks.parentNode;
         newElement.remove();
         console.log('\tElement Removed');
+        console.log('After remove Last dicePOint ',dicePoints[0]);
         console.log('Travelled ',dicePoints[0]);
         console.log(newElement);
-
+        if (dicePoints[0]==2) {
+            document.getElementById('start-p1').appendChild( newElement);
+        }
+        else{
+        document.getElementById('pos-'+dicePoints[0]).appendChild( newElement);
+        }
         dicePoints.shift();
         if (dicePoints.length==0) {
                // Track Event Listeners OFF 
@@ -131,21 +222,120 @@ function rollForward(e){
         }
 
     }
+    else if (clicks.matches('.running-p2')) {
+        //console.log(clicks);
+        
+        console.log('Before remove Last dicePOint ',dicePoints[0]);
+        newElement=clicks.parentNode;
+        newElement.remove();
+        console.log('\tElement Removed');
+        console.log('After remove Last dicePOint ',dicePoints[0]);
+        console.log('Travelled ',dicePoints[0]);
+        console.log(newElement);
+        
+        if (dicePoints[0]==2) {
+            document.getElementById('start-p2').appendChild( newElement);
+        }
+        else{
+            dicePoints[0]+=15;
+        document.getElementById('pos-'+dicePoints[0]).appendChild( newElement);
+        }
+        dicePoints.shift();
+        if (dicePoints.length==0) {
+               // Track Event Listeners OFF 
+               console.log('Track Listeners - OFF');
+               document.querySelectorAll('.mytable')[0].removeEventListener('click',rollForward);
+               document.querySelectorAll('.mytable')[1].removeEventListener('click',rollForward);
+               document.querySelectorAll('.mytable')[2].removeEventListener('click',rollForward);
+               document.querySelectorAll('.mytable')[3].removeEventListener('click',rollForward);
+            if (pickedOrNot==true) {
+                console.log('new Goti was picked!');
+                document.getElementById('p2Home').removeEventListener('click',pickPiece);
+            }
+            //Next Player turn
+            console.log('Next Player ajaei ab');
+            if (totalPlayers>2) {
+            document.getElementById('player-3').addEventListener('click',rollDice);
+            }
+            else{
+            document.getElementById('player-1').addEventListener('click',rollDice);
+            }
+        }
 
-    // if(clicks.matches('.running-p1')){
-    //         newElement = document.createElement('div');
-    //         newElement.innerHTML=`<div class='running-p1' ></div>`;
-            
-    //         // startP1.appendChild( newElement);
-    //         document.getElementById('pos-'+dicePoints.shift()).appendChild( newElement);
-            
-    //         if(dicePoints.length==0){
-    //             document.getElementById('game-board').EventListener('click',rollForward);
-    //         }
-    //         e.preventDefault();   
-    // }
+    }
+    else if (clicks.matches('.running-p3')) {
+        //console.log(clicks);
+        console.log('Before remove Last dicePOint ',dicePoints[0]);
+        newElement=clicks.parentNode;
+        newElement.remove();
+        console.log('\tElement Removed');
+        console.log('After remove Last dicePOint ',dicePoints[0]);
+        console.log('Travelled ',dicePoints[0]);
+        console.log(newElement);
+        if (dicePoints[0]==2) {
+            document.getElementById('start-p3').appendChild( newElement);
+        }
+        else{
+            dicePoints[0]+=41;
+        document.getElementById('pos-'+dicePoints[0]).appendChild( newElement);
+        }
+        dicePoints.shift();
+        if (dicePoints.length==0) {
+               // Track Event Listeners OFF 
+               console.log('Track Listeners - OFF');
+               document.querySelectorAll('.mytable')[0].removeEventListener('click',rollForward);
+               document.querySelectorAll('.mytable')[1].removeEventListener('click',rollForward);
+               document.querySelectorAll('.mytable')[2].removeEventListener('click',rollForward);
+               document.querySelectorAll('.mytable')[3].removeEventListener('click',rollForward);
+            if (pickedOrNot==true) {
+                console.log('new Goti was picked!');
+                document.getElementById('p3Home').removeEventListener('click',pickPiece);
+            }
+            //Next Player turn
+            console.log('Next Player ajaei ab');
+            if (totalPlayers>3) {
+                document.getElementById('player-4').addEventListener('click',rollDice);
+                }
+                else{
+                document.getElementById('player-1').addEventListener('click',rollDice);
+                }
+        }
 
-   
+    }
+    else if (clicks.matches('.running-p4')) {
+        //console.log(clicks);
+        console.log('Before remove Last dicePOint ',dicePoints[0]);
+        newElement=clicks.parentNode;
+        newElement.remove();
+        console.log('\tElement Removed');
+        console.log('After remove Last dicePOint ',dicePoints[0]);
+        console.log('Travelled ',dicePoints[0]);
+        console.log(newElement);
+        if (dicePoints[0]==2) {
+            document.getElementById('start-p4').appendChild( newElement);
+        }
+        else{
+            dicePoints[0]+=28;
+        document.getElementById('pos-'+dicePoints[0]).appendChild( newElement);
+        }
+        dicePoints.shift();
+        if (dicePoints.length==0) {
+               // Track Event Listeners OFF 
+               console.log('Track Listeners - OFF');
+               document.querySelectorAll('.mytable')[0].removeEventListener('click',rollForward);
+               document.querySelectorAll('.mytable')[1].removeEventListener('click',rollForward);
+               document.querySelectorAll('.mytable')[2].removeEventListener('click',rollForward);
+               document.querySelectorAll('.mytable')[3].removeEventListener('click',rollForward);
+            if (pickedOrNot==true) {
+                console.log('new Goti was picked!');
+                document.getElementById('p1Home').removeEventListener('click',pickPiece);
+            }
+            //Next Player turn
+            console.log('Next Player ajaei ab');
+            document.getElementById('player-1').addEventListener('click',rollDice);
+        }
+
+    }
 }
 //ROLL DICE
 function rollDice(e){
@@ -181,10 +371,12 @@ function rollDice(e){
                 document.getElementById('p1Home').addEventListener('click',pickPiece);
             }
             else if(dicePoints[0]!=6 && p1_running==0){
+                dicePoints=[]
                 console.log('Bari Zaya hogai Apki - Player 2 Turn');
-                document.getElementById('player-2').removeEventListener('click',rollDice);
+                document.getElementById('player-2').addEventListener('click',rollDice);
             }
             console.log('No dice for Player - 1');
+            
             document.getElementById('player-1').removeEventListener('click',rollDice);
             
 
@@ -210,6 +402,147 @@ function rollDice(e){
         
         // }
     }
+    else if (clicks.matches('#dice-p2')) {
+        //clicks.src='./load.gif';
+        
+        randomNumber=randDiceRoll();
+        console.log(randomNumber+1);
+        clicks.src=diceFaces[randomNumber];
+        dicePoints.push(randomNumber+1);
+        //console.log('befroe IF ELSE of SIX COndition');
+        if (randomNumber==5){
+            console.log('SIX');
+            console.log('Dobara Dice Roll Karein - Player 2');
+        }
+        else{
+            
+            if (p2_running!=0) {
+                console.log('Bari Chalein');
+                console.log('Track Listeners ON - p2 Player');
+                    // Track Event Listeners  
+                document.querySelectorAll('.mytable')[0].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[1].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[2].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[3].addEventListener('click',rollForward);
+            }
+            if (dicePoints[0]==6) {
+                console.log('Goti Nikalein / Bari Chalein');
+                pickedOrNot=false;
+                console.log(pickedOrNot,'Picked Or Not');
+                document.getElementById('p2Home').addEventListener('click',pickPiece);
+            }
+            else if(dicePoints[0]!=6 && p2_running==0){
+                dicePoints=[]
+                if (totalPlayers>2) {
+                    console.log('Bari Zaya hogai Apki - Player 3 Turn');
+                   
+                document.getElementById('player-3').addEventListener('click',rollDice);
+                }
+                else{
+                    console.log('Bari Zaya hogai Apki - Player 1 Turn');
+                document.getElementById('player-1').addEventListener('click',rollDice);
+                }
+                
+            }
+            console.log('No dice for Player - 2');
+            
+            document.getElementById('player-2').removeEventListener('click',rollDice);
+            
+
+        }
+      }
+      else if (clicks.matches('#dice-p3')) {
+        //clicks.src='./load.gif';
+        
+        randomNumber=randDiceRoll();
+        console.log(randomNumber+1);
+        clicks.src=diceFaces[randomNumber];
+        dicePoints.push(randomNumber+1);
+        //console.log('befroe IF ELSE of SIX COndition');
+        if (randomNumber==5){
+            console.log('SIX');
+            console.log('Dobara Dice Roll Karein - Player 3');
+        }
+        else{
+            
+            if (p3_running!=0) {
+                console.log('Bari Chalein');
+                console.log('Track Listeners ON - p3 Player');
+                    // Track Event Listeners  
+                document.querySelectorAll('.mytable')[0].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[1].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[2].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[3].addEventListener('click',rollForward);
+            }
+            if (dicePoints[0]==6) {
+                console.log('Goti Nikalein / Bari Chalein');
+                pickedOrNot=false;
+                console.log(pickedOrNot,'Picked Or Not');
+                document.getElementById('p3Home').addEventListener('click',pickPiece);
+            }
+            else if(dicePoints[0]!=6 && p3_running==0){
+                dicePoints=[]
+                if (totalPlayers>3) {
+                    console.log('Bari Zaya hogai Apki - Player 4 Turn');
+                    
+                document.getElementById('player-4').addEventListener('click',rollDice);
+                }
+                else{
+                    console.log('Bari Zaya hogai Apki - Player 1 Turn');
+                document.getElementById('player-1').addEventListener('click',rollDice);
+                }
+            }
+            console.log('No dice for Player - 3');
+           
+            document.getElementById('player-3').removeEventListener('click',rollDice);
+            
+
+        }
+      }
+      else if (clicks.matches('#dice-p4')) {
+        //clicks.src='./load.gif';
+        
+        randomNumber=randDiceRoll();
+        console.log(randomNumber+1);
+        clicks.src=diceFaces[randomNumber];
+        dicePoints.push(randomNumber+1);
+        //console.log('befroe IF ELSE of SIX COndition');
+        if (randomNumber==5){
+            console.log('SIX');
+            console.log('Dobara Dice Roll Karein - Player 4');
+        }
+        else{
+            
+            if (p4_running!=0) {
+                console.log('Bari Chalein');
+                console.log('Track Listeners ON - p4 Player');
+                    // Track Event Listeners  
+                document.querySelectorAll('.mytable')[0].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[1].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[2].addEventListener('click',rollForward);
+                document.querySelectorAll('.mytable')[3].addEventListener('click',rollForward);
+            }
+            if (dicePoints[0]==6) {
+                console.log('Goti Nikalein / Bari Chalein');
+                pickedOrNot=false;
+                console.log(pickedOrNot,'Picked Or Not');
+                document.getElementById('p4Home').addEventListener('click',pickPiece);
+            }
+            else if(dicePoints[0]!=6 && p4_running==0){
+                dicePoints=[]
+                console.log('Bari Zaya hogai Apki - Player 1 Turn');
+               
+                document.getElementById('player-1').addEventListener('click',rollDice);
+            }
+            console.log('No dice for Player - 4');
+            
+            document.getElementById('player-4').removeEventListener('click',rollDice);
+            
+
+        }
+      }   
+
+
     // else if (clicks.matches('#dice-p2')) {
     //     // if (clicks.matches(dice_p1) ){
     //         console.log(clicks);
