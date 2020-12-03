@@ -2,10 +2,7 @@
 //Setting up the game
 
 var diceFaces = new Array("./dicefaces/one.png","./dicefaces/two.png","./dicefaces/three.png","./dicefaces/four.png","./dicefaces/five.png","./dicefaces/six.png",);
-// const diceP1 = document.getElementById('dice-p1');
-// const diceP2 = document.getElementById('dice-p2');
-// const diceP3 = document.getElementById('dice-p3');
-// const diceP4 = document.getElementById('dice-p4');
+
 var totalPlayers=4;
 var gameEnd=false;
 var sRandomNum=0;
@@ -17,30 +14,6 @@ for(let i=1;i<totalPlayers+1;i++){
     
 }
 
-//Behind the Scenes
-const p1Home = document.getElementById('player-1');
-const p2Home = document.getElementById('player-2');
-const p3Home = document.getElementById('player-3');
-const p4Home = document.getElementById('player-4');
-
-// p3Home.className='disabledDiv';
-// p4Home.className='disabledDiv';
-
-// const startP1 = document.getElementById('start-p1');
-// const startP2 = document.getElementById('start-p2');
-// const startP3 = document.getElementById('start-p3');
-// const startP4 = document.getElementById('start-p4');
-
-//const runP1=new Array();
-
-// p1Home.addEventListener('click',pickPiece);
-// p1Home.removeEventListener('click',pickPiece);
-
-
-// p1Home.addEventListener('click',rollDice);
-// p2Home.addEventListener('click',rollDice);
-// p3Home.addEventListener('click',rollDice);
-// p4Home.addEventListener('click',rollDice);
 var dice_p1='#dice-p1',
     dice_p2='#dice-p2',
     dice_p3='#dice-p3',
@@ -56,6 +29,7 @@ var dice_p1='#dice-p1',
 
 
 document.getElementById('player-1').addEventListener('click',rollDice);
+ 
 
 //functions
 function pickPiece(e) {
@@ -67,15 +41,15 @@ function pickPiece(e) {
             {
             newElement = document.createElement('div');
             newElement.innerHTML+=`<div class='running-p1' ></div>`;
-            // startP1.appendChild( newElement);
-            document.getElementById('start-p1').appendChild( newElement);
+            
+            document.getElementById('pos-12').appendChild( newElement);
             p1_running+=1;
             pickedOrNot=true;
             dicePoints.shift();
-            // document.getElementById('p1Home').removeEventListener('click',pickPiece);
+            
             clicks.style.visibility = 'hidden';
             console.log('new Goti of Player -1');
-            console.log(document.getElementById('start-p1'));
+            console.log(document.getElementById('pos-12'));
             if (dicePoints[0]!=6) {
                 document.getElementById('p1Home').removeEventListener('click',pickPiece);
             }
@@ -96,14 +70,14 @@ function pickPiece(e) {
             newElement = document.createElement('div');
             newElement.innerHTML+=`<div class='running-p2' ></div>`;
             // startP2.appendChild( newElement);
-            document.getElementById('start-p2').appendChild( newElement);
+            document.getElementById('pos-25').appendChild( newElement);
             p2_running+=1;
             pickedOrNot=true;
             dicePoints.shift();
-            // document.getElementById('p1Home').removeEventListener('click',pickPiece);
+            
             clicks.style.visibility = 'hidden';
             console.log('new Goti of Player -2');
-            console.log(document.getElementById('start-p2'));
+            console.log(document.getElementById('pos-25'));
             if (dicePoints[0]!=6) {
                 document.getElementById('p2Home').removeEventListener('click',pickPiece);
             }
@@ -124,14 +98,14 @@ function pickPiece(e) {
             newElement = document.createElement('div');
             newElement.innerHTML+=`<div class='running-p3' ></div>`;
             // startP3.appendChild( newElement);
-            document.getElementById('start-p3').appendChild( newElement);
+            document.getElementById('pos-51').appendChild( newElement);
             p3_running+=1;
             pickedOrNot=true;
             dicePoints.shift();
             // document.getElementById('p3Home').removeEventListener('click',pickPiece);
             clicks.style.visibility = 'hidden';
             console.log('new Goti of Player -3');
-            console.log(document.getElementById('start-p3'));
+            console.log(document.getElementById('pos-51'));
             if (dicePoints[0]!=6) {
                 document.getElementById('p3Home').removeEventListener('click',pickPiece);
             }
@@ -152,14 +126,14 @@ function pickPiece(e) {
             newElement = document.createElement('div');
             newElement.innerHTML+=`<div class='running-p4' ></div>`;
             // startP4.appendChild( newElement);
-            document.getElementById('start-p4').appendChild( newElement);
+            document.getElementById('pos-38').appendChild( newElement);
             p4_running+=1;
             pickedOrNot=true;
             dicePoints.shift();
-            // document.getElementById('p4Home').removeEventListener('click',pickPiece);
+            
             clicks.style.visibility = 'hidden';
             console.log('new Goti of Player -4');
-            console.log(document.getElementById('start-p4'));
+            console.log(document.getElementById('pos-38'));
             if (dicePoints[0]!=6) {
                 document.getElementById('p4Home').removeEventListener('click',pickPiece);
             }
@@ -187,26 +161,33 @@ function randGif(){
 //ROLL FORWARD
 function rollForward(e){
     const clicks=e.target;
-    // console.log(clicks);
-    // dicePoints.shift();
+    
     if (clicks.matches('.running-p1')) {
-        //console.log(clicks);
-        console.log('Before remove Last dicePOint ',dicePoints[0]);
-        newElement=clicks.parentNode;
-        newElement.remove();
-        console.log('\tElement Removed');
-        console.log('After remove Last dicePOint ',dicePoints[0]);
-        console.log('Travelled ',dicePoints[0]);
-        console.log(newElement);
-        if (dicePoints[0]==2) {
-            document.getElementById('start-p1').appendChild( newElement);
+       
+        let prevId=clicks.offsetParent.id;
+        prevId=String(prevId);
+        
+        let nextPos=parseInt(prevId.slice(-2),10);
+        console.log('Before adding new pos in var: ',nextPos);
+        for (let fwd_i = 0; fwd_i < dicePoints[0]; fwd_i++) {
+            nextPos+=1;
         }
-        else{
-        document.getElementById('pos-'+dicePoints[0]).appendChild( newElement);
+        if (nextPos<=68) {
+            newElement=clicks.parentNode;
+            newElement.remove();
+            console.log('\tElement Removed');
+            document.getElementById('pos-'+nextPos).appendChild( newElement);
+            console.log('After adding new pos in var: ',nextPos);
+            console.log('Travelled ',dicePoints[0]);
+            console.log(newElement);
+            dicePoints.shift();
+            if (nextPos==68) {
+                p1_running--;
+            }
         }
-        dicePoints.shift();
         if (dicePoints.length==0) {
                // Track Event Listeners OFF 
+                
                console.log('Track Listeners - OFF');
                document.querySelectorAll('.mytable')[0].removeEventListener('click',rollForward);
                document.querySelectorAll('.mytable')[1].removeEventListener('click',rollForward);
@@ -219,29 +200,42 @@ function rollForward(e){
             //Next Player turn
             console.log('Next Player ajaei ab');
             document.getElementById('player-2').addEventListener('click',rollDice);
+             
         }
 
     }
     else if (clicks.matches('.running-p2')) {
         //console.log(clicks);
         
-        console.log('Before remove Last dicePOint ',dicePoints[0]);
-        newElement=clicks.parentNode;
-        newElement.remove();
-        console.log('\tElement Removed');
-        console.log('After remove Last dicePOint ',dicePoints[0]);
-        console.log('Travelled ',dicePoints[0]);
-        console.log(newElement);
+        let prevId=clicks.offsetParent.id;
+        prevId=String(prevId);
         
-        if (dicePoints[0]==2) {
-            document.getElementById('start-p2').appendChild( newElement);
+        let nextPos=parseInt(prevId.slice(-2),10);
+        console.log('Before adding new pos in var: ',nextPos);
+        for (let fwd_i = 0; fwd_i < dicePoints[0]; fwd_i++) {
+            nextPos+=1;
+            if (nextPos==63) {
+                nextPos=11;
+            }
+            else if (nextPos==24) {
+                nextPos=69;
+            }
         }
-        else{
-            dicePoints[0]+=15;
-        document.getElementById('pos-'+dicePoints[0]).appendChild( newElement);
+        if (nextPos<=74) {
+            newElement=clicks.parentNode;
+            newElement.remove();
+            console.log('\tElement Removed');
+            document.getElementById('pos-'+nextPos).appendChild( newElement);
+            console.log('After adding new pos in var: ',nextPos);
+            console.log('Travelled ',dicePoints[0]);
+            console.log(newElement);
+            dicePoints.shift();
+            if (nextPos==74) {
+                p2_running--;
+            }
         }
-        dicePoints.shift();
         if (dicePoints.length==0) {
+                  
                // Track Event Listeners OFF 
                console.log('Track Listeners - OFF');
                document.querySelectorAll('.mytable')[0].removeEventListener('click',rollForward);
@@ -256,31 +250,45 @@ function rollForward(e){
             console.log('Next Player ajaei ab');
             if (totalPlayers>2) {
             document.getElementById('player-3').addEventListener('click',rollDice);
+             
             }
             else{
             document.getElementById('player-1').addEventListener('click',rollDice);
+             
             }
         }
 
     }
     else if (clicks.matches('.running-p3')) {
-        //console.log(clicks);
-        console.log('Before remove Last dicePOint ',dicePoints[0]);
-        newElement=clicks.parentNode;
-        newElement.remove();
-        console.log('\tElement Removed');
-        console.log('After remove Last dicePOint ',dicePoints[0]);
-        console.log('Travelled ',dicePoints[0]);
-        console.log(newElement);
-        if (dicePoints[0]==2) {
-            document.getElementById('start-p3').appendChild( newElement);
+        let prevId=clicks.offsetParent.id;
+        prevId=String(prevId);
+        
+        let nextPos=parseInt(prevId.slice(-2),10);
+        console.log('Before adding new pos in var: ',nextPos);
+        for (let fwd_i = 0; fwd_i < dicePoints[0]; fwd_i++) {
+            nextPos+=1;
+            if (nextPos==63) {
+                nextPos=11;
+            }
+            else if (nextPos==50) {
+                nextPos=75;
+            }
         }
-        else{
-            dicePoints[0]+=41;
-        document.getElementById('pos-'+dicePoints[0]).appendChild( newElement);
+        if (nextPos<=80) {
+            newElement=clicks.parentNode;
+            newElement.remove();
+            console.log('\tElement Removed');
+            document.getElementById('pos-'+nextPos).appendChild( newElement);
+            console.log('After adding new pos in var: ',nextPos);
+            console.log('Travelled ',dicePoints[0]);
+            console.log(newElement);
+            dicePoints.shift();
+            if (nextPos==74) {
+                p3_running--;
+            }
         }
-        dicePoints.shift();
         if (dicePoints.length==0) {
+                 
                // Track Event Listeners OFF 
                console.log('Track Listeners - OFF');
                document.querySelectorAll('.mytable')[0].removeEventListener('click',rollForward);
@@ -295,31 +303,45 @@ function rollForward(e){
             console.log('Next Player ajaei ab');
             if (totalPlayers>3) {
                 document.getElementById('player-4').addEventListener('click',rollDice);
+                 
                 }
                 else{
                 document.getElementById('player-1').addEventListener('click',rollDice);
+                 
                 }
         }
 
     }
     else if (clicks.matches('.running-p4')) {
-        //console.log(clicks);
-        console.log('Before remove Last dicePOint ',dicePoints[0]);
-        newElement=clicks.parentNode;
-        newElement.remove();
-        console.log('\tElement Removed');
-        console.log('After remove Last dicePOint ',dicePoints[0]);
-        console.log('Travelled ',dicePoints[0]);
-        console.log(newElement);
-        if (dicePoints[0]==2) {
-            document.getElementById('start-p4').appendChild( newElement);
+        let prevId=clicks.offsetParent.id;
+        prevId=String(prevId);
+        
+        let nextPos=parseInt(prevId.slice(-2),10);
+        console.log('Before adding new pos in var: ',nextPos);
+        for (let fwd_i = 0; fwd_i < dicePoints[0]; fwd_i++) {
+            nextPos+=1;
+            if (nextPos==63) {
+                nextPos=11;
+            }
+            else if (nextPos==37) {
+                nextPos=81;
+            }
         }
-        else{
-            dicePoints[0]+=28;
-        document.getElementById('pos-'+dicePoints[0]).appendChild( newElement);
+        if (nextPos<=86) {
+            newElement=clicks.parentNode;
+            newElement.remove();
+            console.log('\tElement Removed');
+            document.getElementById('pos-'+nextPos).appendChild( newElement);
+            console.log('After adding new pos in var: ',nextPos);
+            console.log('Travelled ',dicePoints[0]);
+            console.log(newElement);
+            dicePoints.shift();
+            if (nextPos==74) {
+                p4_running--;
+            }
         }
-        dicePoints.shift();
         if (dicePoints.length==0) {
+                 
                // Track Event Listeners OFF 
                console.log('Track Listeners - OFF');
                document.querySelectorAll('.mytable')[0].removeEventListener('click',rollForward);
@@ -333,6 +355,7 @@ function rollForward(e){
             //Next Player turn
             console.log('Next Player ajaei ab');
             document.getElementById('player-1').addEventListener('click',rollDice);
+            
         }
 
     }
@@ -343,7 +366,7 @@ function rollDice(e){
     const clicks = e.target;
     if (clicks.matches('#dice-p1')) {
         //clicks.src='./load.gif';
-        
+          
         randomNumber=randDiceRoll();
         console.log(randomNumber+1);
         clicks.src=diceFaces[randomNumber];
@@ -374,33 +397,16 @@ function rollDice(e){
                 dicePoints=[]
                 console.log('Bari Zaya hogai Apki - Player 2 Turn');
                 document.getElementById('player-2').addEventListener('click',rollDice);
+                 
             }
             console.log('No dice for Player - 1');
             
             document.getElementById('player-1').removeEventListener('click',rollDice);
             
+            
 
         }
-        // if(dicePoints[dicePoints.length-1==6] || randomNumber==5)
-        // {
-        //     console.log('SIX');
-        //     theSix=true;
-        //     console.log(dicePoints[dicePoints.length-1]);
-        // }
-        // else
-        // {
-                
-        //     console.log('NOT SIX');
-        //     document.getElementById('player-1').removeEventListener('click',rollDice);
-        //     // if (theSix==true){
-        //     // document.getElementById('p1Home').addEventListener('click',pickPiece);
-        //     //  }
-        //     // for (let ind = 0; ind <4; ind++) {
-        //     // document.querySelectorAll('.mytable')[ind].addEventListener('click',rollForward);
-            
-        //     //  }
         
-        // }
     }
     else if (clicks.matches('#dice-p2')) {
         //clicks.src='./load.gif';
@@ -437,16 +443,19 @@ function rollDice(e){
                     console.log('Bari Zaya hogai Apki - Player 3 Turn');
                    
                 document.getElementById('player-3').addEventListener('click',rollDice);
+                 
                 }
                 else{
                     console.log('Bari Zaya hogai Apki - Player 1 Turn');
                 document.getElementById('player-1').addEventListener('click',rollDice);
+                 
                 }
                 
             }
             console.log('No dice for Player - 2');
             
             document.getElementById('player-2').removeEventListener('click',rollDice);
+            
             
 
         }
@@ -486,10 +495,12 @@ function rollDice(e){
                     console.log('Bari Zaya hogai Apki - Player 4 Turn');
                     
                 document.getElementById('player-4').addEventListener('click',rollDice);
+                 
                 }
                 else{
                     console.log('Bari Zaya hogai Apki - Player 1 Turn');
                 document.getElementById('player-1').addEventListener('click',rollDice);
+                 
                 }
             }
             console.log('No dice for Player - 3');
@@ -533,75 +544,14 @@ function rollDice(e){
                 console.log('Bari Zaya hogai Apki - Player 1 Turn');
                
                 document.getElementById('player-1').addEventListener('click',rollDice);
+                 
             }
             console.log('No dice for Player - 4');
             
-            document.getElementById('player-4').removeEventListener('click',rollDice);
-            
+            document.getElementById('player-4').removeEventListener('click',rollDice);      
 
         }
       }   
-
-
-    // else if (clicks.matches('#dice-p2')) {
-    //     // if (clicks.matches(dice_p1) ){
-    //         console.log(clicks);
-    //         clicks.src='./load.gif';
-    //         randomNumber=randDiceRoll();
-    //         console.log(randomNumber+1);
-    //         setTimeout(function(){clicks.src=diceFaces[randomNumber]}, randGif()*700);
-    //         dicePoints.push(randomNumber+1);
-    //         if(randomNumber==5){
-    //             console.log('SIX');
-    //         }
-    //         else{
-    //             document.getElementById('player-2').removeEventListener('click',rollDice);
-    //             if (totalPlayers>2) {
-    //                 document.getElementById('player-3').addEventListener('click',rollDice);
-    //             }
-    //             else{
-    //                 document.getElementById('player-1').addEventListener('click',rollDice);
-    //             }
-    //         }
-    //     }
-    // else if (clicks.matches('#dice-p3')) {
-    //         // if (clicks.matches(dice_p1) ){
-    //             console.log(clicks);
-    //             clicks.src='./load.gif';
-    //             randomNumber=randDiceRoll();
-    //             console.log(randomNumber);
-    //             setTimeout(function(){clicks.src=diceFaces[randomNumber]}, randGif()*700);
-    //             dicePoints.push(randomNumber+1);
-    //             if(randomNumber==5){
-    //                 console.log('SIX');
-    //             }
-    //             else{
-    //                 document.getElementById('player-3').removeEventListener('click',rollDice);
-    //                 if (totalPlayers>3) {
-    //                     document.getElementById('player-4').addEventListener('click',rollDice);
-    //                 }
-    //                 else{
-    //                     document.getElementById('player-1').addEventListener('click',rollDice);
-    //                 }
-                    
-    //             }
-    //         }
-    // else if (clicks.matches('#dice-p4')) {
-    //             // if (clicks.matches(dice_p1) ){
-    //                 console.log(clicks);
-    //                 clicks.src='./load.gif';
-    //                 randomNumber=randDiceRoll();
-    //                 console.log(randomNumber);
-    //                 setTimeout(function(){clicks.src=diceFaces[randomNumber]}, randGif()*700);
-    //                 dicePoints.push(randomNumber+1);
-    //                 if(randomNumber==5){
-    //                     console.log('SIX');
-    //                 }
-    //                 else{
-    //                     document.getElementById('player-4').removeEventListener('click',rollDice);
-    //                     document.getElementById('player-1').addEventListener('click',rollDice);
-    //                 }
-    // }
     e.preventDefault();
     }
 

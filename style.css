@@ -1,3 +1,11 @@
+body {
+  margin: 0px;
+
+  position: relative;
+}
+h1 {
+  text-align: center;
+}
 #game-wrapper {
   width: 800px;
   height: 800px;
@@ -108,6 +116,7 @@ table {
   background-size: 100%;
   background-repeat: no-repeat;
   margin: 0px;
+  position: relative;
 }
 .middle-section {
   margin: auto;
@@ -119,32 +128,75 @@ table {
   margin: 0;
   position: relative;
 }
-.carpet-p1,
-#start-p1 {
+.endBox {
+  width: 50px;
+  height: 50px;
+  background-color: none;
+  margin: 0;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.4;
+}
+#pos-68 {
+  top: 54px;
+}
+#pos-74 {
+  top: 0px;
+  left: 50px;
+}
+#pos-80 {
+  bottom: 0px;
+  left: 50px;
+}
+#pos-86 {
+  top: 54px;
+  left: 100px;
+}
+#pos-12,
+#pos-63,
+#pos-64,
+#pos-65,
+#pos-66,
+#pos-67 {
   background-color: #f04835;
 }
-.carpet-p2,
-#start-p2 {
+
+#pos-25,
+#pos-69,
+#pos-70,
+#pos-71,
+#pos-72,
+#pos-73 {
   background-color: #53aa53;
 }
-.carpet-p3,
-#start-p3 {
+
+#pos-51,
+#pos-75,
+#pos-76,
+#pos-77,
+#pos-78,
+#pos-79 {
   background-color: #3795f5;
 }
-.carpet-p4,
-#start-p4 {
+
+#pos-38,
+#pos-81,
+#pos-82,
+#pos-83,
+#pos-84,
+#pos-85 {
   background-color: #fcc118;
 }
-#pos-49 {
+#pos-59 {
   background-color: #f04835;
 }
-#pos-36 {
+#pos-46 {
   background-color: #3795f5;
 }
-#pos-23 {
+#pos-33 {
   background-color: #fcc118;
 }
-#pos-10 {
+#pos-20 {
   background-color: #53aa53;
 }
 .running {
